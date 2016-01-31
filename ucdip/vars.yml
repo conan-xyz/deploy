@@ -1,0 +1,8 @@
+---
+project_name: ucdip
+project_real_name: isr
+project_root: /tmp/ucdip
+project_dir: /tmp/ucdip/isr
+project_repo: git@github.com:5peng/ucdip.git
+branch: master
+key_file: /home/ucdip/.ssh/id_rsa
