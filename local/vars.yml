@@ -1,0 +1,8 @@
+---
+project_name: ucdip
+project_dir: /home/ucdip/demo/ucdip
+project_repo: git@github.com:5peng/ucdip.git
+project_remote_repo: origin_demo
+branch: master
+remote_branch: master
+key_file: /home/ucdip/.ssh/id_ucdip

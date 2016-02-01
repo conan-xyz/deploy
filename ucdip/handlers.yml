@@ -1,8 +1,8 @@
 ---
 - name: restart supervisor project_name
-  shell: /usr/local/bin/supervisorctl restart {{ project_real_name }}
-  sudo_user: root
+  shell: /usr/local/bin/supervisorctl restart isr
+  sudo: true
 
 - name: reload nginx
   shell: /etc/init.d/nginx reload
-  sudo_user: root
+  sudo: true

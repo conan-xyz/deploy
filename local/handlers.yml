@@ -1,0 +1,3 @@
+---
+- name: pull to demo server
+  shell: eval "$(ssh-agent -s)" && ssh-add {{ key_file }} && git push {{ project_remote_repo }} {{ remote_branch }}

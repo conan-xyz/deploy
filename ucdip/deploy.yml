@@ -2,25 +2,21 @@
 - hosts: DemoServer
   vars_files:
     - vars.yml
-  gather_facts: false
-  sudo_user: project_name
+  remote_user: ucdip
 
   tasks:
   - name: Pull sources from the repository.
-    git: repo={{ project_repo }} 
-    	 dest={{ project_root }} 
-    	 version={{ branch }} 
-    	 key_file = {{ key_file }}
-    	 update = yes
-    	 remote = origin
+    git: repo={{ project_repo }} dest={{ project_root }} version={{ branch }} key_file={{ key_file }} update=yes remote=origin
 
   - name: Upgrade the virtualenv.
     pip: requirements={{ project_dir }}/requirements.txt virtualenv={{ project_dir }}/venv/
 
-  - name: Upgrade database.
-    shell: {{ project_dir }}/venv/bin/python {{ project_root }}/manage.py db upgrade
+  - name: Set env variables and pgrade database.
+    shell: export MODE={{ mode }} && export DATABASE_URL={{ database_url }} && {{ project_dir }}/venv/bin/python {{ project_dir }}/manager.py db upgrade
 
   - name: make web frontend.
-  	shell: make
-  	notify:
-  		- restart supervisor project_name
+    shell: make build-all chdir={{ project_dir }}
+    notify: restart supervisor {{ project_name }}
+
+  handlers:
+    - include: handlers.yml

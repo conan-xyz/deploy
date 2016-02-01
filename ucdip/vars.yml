@@ -1,8 +1,10 @@
 ---
 project_name: ucdip
 project_real_name: isr
-project_root: /tmp/ucdip
-project_dir: /tmp/ucdip/isr
-project_repo: git@github.com:5peng/ucdip.git
+project_root: /home/ucdip/isr
+project_dir: /home/ucdip/isr/isr
+project_repo: git@10.10.10.10:isr.git  # 修改IP
 branch: master
 key_file: /home/ucdip/.ssh/id_rsa
+mode: production
+database_url: mysql://isr:welcome@127.0.0.1/isr?charset=utf8  # 修改username和password
